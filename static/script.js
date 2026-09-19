@@ -19,14 +19,14 @@ document.querySelector(".modal form").addEventListener("submit", (event)=> {
     }).then(()=>location.reload())
 })
 
-let wrapper = document.querySelector(".wrapper")
-fetch("/posts").then(res => res.json()).then(data=>{
-    data.forEach(post=> {
-        wrapper.innerHTML += `
-            <div class="ad">
-                <h3>${post.title}</h3>
-                <p>${post.description}</p>
-            </div>
-        `
-    })
-})
+// let wrapper = document.querySelector(".wrapper")
+// fetch("/posts").then(res => res.json()).then(data=>{
+//     data.forEach(post=> {
+//         wrapper.innerHTML += `
+//             <div class="ad">
+//                 <h3>${post.title}</h3>
+//                 <p>${post.description}</p>
+//             </div>
+//         `
+//     })
+// })
