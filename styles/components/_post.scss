@@ -1,3 +1,13 @@
+@use "../base/mixins" as m;
+@use "../base/colors" as c;
+
+.post {
+    h1, p {
+        text-align: center;
+    }
+    min-height: 50vh;
+}
+
 .images {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -8,3 +18,16 @@
         width: 100%;
     }
 }
+
+#comment-form  {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    @include m.transparent-shadow($y: -5px);
+    background-color: c.$primary-200;
+}
+
+ul {
+    padding: 2rem;
+}
+

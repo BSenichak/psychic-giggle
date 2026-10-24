@@ -60,17 +60,30 @@ app.post("/add", upload.fields([{name: "image"}]), (req, res)=>{
 app.get("/post/:id", (req, res) => {
     const postId = Number(req.params.id)
     
-    db.query("SELECT * FROM posts WHERE id = ?", postId, (err, result)=>{
+    db.query(`
+        SELECT p.*, c.id AS commentId, c.author, c.comment FROM posts AS p
+        LEFT JOIN comments AS c
+        ON c.post_id = p.id
+        WHERE p.id = ?
+        `, postId, (err, result)=>{
         if(err || result.length === 0){
             res.status(404)
             res.render("notfound")
             return
         }
         let post = result[0]
+        console.log(result)
         post.image = post.image != "" ? JSON.parse(post.image) : null
-        res.render("post", { post })
+        res.render("post", { post, comments: result })
     })
 
+})
+
+app.post("/comment", (req, res)=>{
+    db.query("INSERT INTO comments SET ?", req.body, (err) => {
+        res.status(201)
+        res.end();
+    })
 })
 
 app.use((req, res, next)=>{

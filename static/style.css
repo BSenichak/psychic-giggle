@@ -122,6 +122,13 @@ select {
   border-radius: 0.3rem;
 }
 
+.post h1, .post p {
+  text-align: center;
+}
+.post {
+  min-height: 50vh;
+}
+
 .images {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -130,6 +137,18 @@ select {
 }
 .images img {
   width: 100%;
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.5);
+  background-color: #57687c;
+}
+
+ul {
+  padding: 2rem;
 }
 
 * {
